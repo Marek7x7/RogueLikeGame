@@ -5,7 +5,6 @@
 
 namespace fs = std::filesystem;
 
-// Fix 1: Accept homeDir as a parameter
 void checkSaveFile (const char* homeDir) {
     fs::path saveDirPath = fs::path(homeDir) / "Documents/repos/RogueLikeGame/save";
     fs::path saveFilePath = saveDirPath / "saveFile.txt";
@@ -29,8 +28,9 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Fix 2: Call the function and pass the home directory to it
     checkSaveFile(homeDir);
+
+
 
     return 0;
 }
