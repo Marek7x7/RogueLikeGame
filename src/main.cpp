@@ -9,7 +9,7 @@
 namespace fs = std::filesystem;
 using json = nlohmann::json;
 
- void writeSaveFile(std::string userName,const char* homeDir) {
+void writeSaveFile(std::string userName,const char* homeDir) {
     fs::path saveDirPath = fs::path(homeDir) / "Documents/repos/RogueLikeGame/save";
     fs::path saveFilePath = saveDirPath / "saveFile.json";
     json player;
@@ -30,7 +30,7 @@ using json = nlohmann::json;
 
  }
 
-void checkSaveFile (const char* homeDir, std::string userName) {
+void checkSaveFile(const char* homeDir, std::string userName) {
     fs::path saveDirPath = fs::path(homeDir) / "Documents/repos/RogueLikeGame/save";
     fs::path saveFilePath = saveDirPath / "saveFile.json";
 
@@ -38,12 +38,8 @@ void checkSaveFile (const char* homeDir, std::string userName) {
         fs::create_directories(saveDirPath);
     }
 
-    std::ofstream saveFile(saveFilePath);
-    if (saveFile.is_open()) {
+    if (!fs::exists(saveFilePath)) {
         writeSaveFile(userName, homeDir);
-        saveFile.close();
-    } else {
-        std::cerr << "Failed to create the file." << std::endl;
     }
 }
 
@@ -71,7 +67,6 @@ std::tuple<std::string, int, int, int, int, int> readSaveFile(const char* homeDi
  }
 
 
-
 int main(int argc, char* argv[]) {
     //getting variables to setup the save directory and file to save progress
     const char* homeDir = std::getenv("HOME");
@@ -81,8 +76,6 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    
-
     //asking user for username
     std::string userName;
     std::cout << "What is your username: ";;
@@ -91,6 +84,8 @@ int main(int argc, char* argv[]) {
     checkSaveFile(homeDir, userName);
     //read save file and store values in variables
     auto [username, level, health, mana, speed, defense] = readSaveFile(homeDir);
+
+
 
     
 
