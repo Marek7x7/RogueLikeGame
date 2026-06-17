@@ -18,16 +18,26 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    //initializing username for the player
     std::string username;
     std::cout << "Enter your username: ";
     std::getline(std::cin, username);
-    
+
+    //creating the file system to save the game
     checkSaveFile(homeDir, username);
 
+    //loading player stats
     player pl = load();
 
-    std::cout << "Welcome to the game, " << pl.username << "!\n";
-    std::cout << "HP: " << pl.hp << "\n";
+    if (pl.playCount < 1) {
+        std::cout << "Welcome to the game, " << pl.username << "!\n";
+        std::cout << "HP: " << pl.hp << "\n";
+        std::cout << "MP: " << pl.mp << "\n";
+        std::cout << "speed: " << pl.speed << "\n";
+        std::cout << "defense: " << pl.defense << "\n";
+    } else {
+        std::cout << "Welcome Back" << pl.username << "!\n";
+    }
 
     return 0;
 }

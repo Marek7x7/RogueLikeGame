@@ -36,6 +36,7 @@ inline void save(const player &pl, const char* homeDir) {
     json playerData;
     playerData["username"] = pl.username;
     playerData["level"] = pl.level;
+    playerData["playCount"] = pl.playCount;
     playerData["stats"]["hp"] = pl.hp;
     playerData["stats"]["mp"] = pl.mp;
     playerData["stats"]["speed"] = pl.speed;

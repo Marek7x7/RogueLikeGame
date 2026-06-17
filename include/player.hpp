@@ -9,4 +9,5 @@ struct player
     int mp = 10;
     int speed = 1;
     int defense = 1;
+    int playCount = 0;
 };
