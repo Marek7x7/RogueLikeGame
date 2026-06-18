@@ -64,5 +64,6 @@ inline void checkSaveFile(const char* homeDir, const std::string &username) {
         defaultPlayer.username = username;
         save(defaultPlayer, homeDir);
     }
+
 }
 

@@ -1,11 +1,11 @@
 {
-    "level": 0,
-    "playCount": 0,
+    "level": 1,
+    "playCount": 1,
     "stats": {
         "defense": 1,
         "hp": 10,
         "mp": 10,
         "speed": 1
     },
-    "username": "Marek"
+    "username": "marek"
 }
