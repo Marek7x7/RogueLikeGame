@@ -22,6 +22,7 @@ inline player load() {
     player pl;
     pl.username = data["username"];
     pl.level = data["level"];
+    pl.playCount = data["playCount"];
     pl.hp = data["stats"]["hp"];
     pl.mp = data["stats"]["mp"];
     pl.speed = data["stats"]["speed"];

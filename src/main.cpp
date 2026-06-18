@@ -8,7 +8,8 @@
 #include "../include/player.hpp"
 #include "../include/game.hpp"
 
-int init () {
+int main(int argc, char* argv[]) {
+
     //getting variables to setup the save directory and file to save progress
     const char* homeDir = std::getenv("HOME");
     fs::path saveFile("saveFile.json");
@@ -19,10 +20,6 @@ int init () {
     //creating the file system to save the game
     checkSaveFile(homeDir, "user");
 
-}
-
-
-int main(int argc, char* argv[]) {
 
     std::string username;
     std::string userInput;
@@ -49,10 +46,8 @@ int main(int argc, char* argv[]) {
         std::cout << "MP: " << mp << "\n";
         std::cout << "speed: " << speed << "\n";
         std::cout << "defense: " << defense << "\n";
-        ++playCount;
     } else {
         std::cout << "Welcome Back" << username << "!\n";
-        ++playCount;
     }
 
     
@@ -68,7 +63,7 @@ int main(int argc, char* argv[]) {
             pl.speed = speed;
             pl.defense = defense;
             pl.level = defense;
-            pl.playCount = playCount;
+            pl.playCount = playCount += 1;
             save(pl, homeDir);
         }
     }
