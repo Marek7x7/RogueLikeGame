@@ -3,10 +3,10 @@
 #include <fstream>
 #include <cstdlib>
 #include <string>
-#include <vector>
+
 #include "../include/json.hpp"
-#include "../include/player.hpp"
 #include "../include/game.hpp"
+#include "../include/files.hpp"
 
 int main(int argc, char* argv[]) {
 
@@ -30,6 +30,7 @@ int main(int argc, char* argv[]) {
 
     //loading player stats
     player pl = load();
+    enemy enemy;
 
     //initializing local player variables
     int hp = pl.hp;
@@ -47,13 +48,13 @@ int main(int argc, char* argv[]) {
         std::cout << "speed: " << speed << "\n";
         std::cout << "defense: " << defense << "\n";
     } else {
-        std::cout << "Welcome Back" << username << "!\n";
+        std::cout << "Welcome Back " << username << "!\n";
     }
 
     
     //game loop
     while (userInput != "exit") {
-        std::cout << "write exit" << "\n";
+        std::cout << "> ";
         std::getline(std::cin, userInput);
 
         if (userInput == "exit") {
@@ -66,6 +67,11 @@ int main(int argc, char* argv[]) {
             pl.playCount = playCount += 1;
             save(pl, homeDir);
         }
+
+        if (userInput == "battle") {
+            battle(pl, enemy);
+        }
+
     }
 
     return 0;
