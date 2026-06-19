@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
     }
 
     
-
+    //game loop
     while (userInput != "exit") {
         std::cout << "write exit" << "\n";
         std::getline(std::cin, userInput);
