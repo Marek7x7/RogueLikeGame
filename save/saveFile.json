@@ -1,9 +1,10 @@
 {
-    "level": 1,
-    "playCount": 2,
+    "playCount": 6,
     "stats": {
+        "damage": 3,
         "defense": 1,
         "hp": 10,
+        "level": 0,
         "mp": 10,
         "speed": 1
     },

@@ -2,9 +2,7 @@
 #include <filesystem>
 #include <fstream>
 #include <cstdlib>
-#include <string>
 
-#include "../include/json.hpp"
 #include "../include/game.hpp"
 #include "../include/files.hpp"
 
@@ -17,16 +15,15 @@ int main(int argc, char* argv[]) {
         std::cerr << "Could not find home directory." << std::endl;
         return 1;
     }
-    //creating the file system to save the game
-    checkSaveFile(homeDir, "user");
-
-
     std::string username;
     std::string userInput;
 
     //initializing username for the player
     std::cout << "Enter your username: ";
     std::getline(std::cin, username);
+
+    //creating the file system to save the game
+    checkSaveFile(homeDir, username);
 
     //loading player stats
     player pl = load();
@@ -35,6 +32,7 @@ int main(int argc, char* argv[]) {
     //initializing local player variables
     int hp = pl.hp;
     int mp = pl.mp;
+    int damage = pl.damage;
     int speed = pl.speed;
     int defense = pl.defense;
     int level = pl.level;
@@ -45,6 +43,7 @@ int main(int argc, char* argv[]) {
         std::cout << "Welcome to the game, " << username << "!\n";
         std::cout << "HP: " << hp << "\n";
         std::cout << "MP: " << mp << "\n";
+        std::cout << "damage: " << damage << "\n";
         std::cout << "speed: " << speed << "\n";
         std::cout << "defense: " << defense << "\n";
     } else {
@@ -61,15 +60,15 @@ int main(int argc, char* argv[]) {
             pl.username = username;
             pl.hp = hp;
             pl.mp = mp;
+            pl.damage = damage;
             pl.speed = speed;
             pl.defense = defense;
-            pl.level = defense;
             pl.playCount = playCount += 1;
             save(pl, homeDir);
         }
 
         if (userInput == "battle") {
-            battle(pl, enemy);
+            battle(pl, enemy, userInput);
         }
 
     }
