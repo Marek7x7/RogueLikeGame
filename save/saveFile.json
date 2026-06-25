@@ -1,12 +1,13 @@
 {
-    "playCount": 6,
+    "playCount": 2,
     "stats": {
         "damage": 3,
         "defense": 1,
-        "hp": 10,
+        "hp": 4,
         "level": 0,
         "mp": 10,
-        "speed": 1
+        "speed": 1,
+        "xp": 0
     },
     "username": "marek"
 }

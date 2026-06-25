@@ -23,6 +23,7 @@ inline player load() {
     pl.username = data["username"];
     pl.playCount = data["playCount"];
     pl.level = data["stats"]["level"];
+    pl.xp = data["stats"]["xp"];
     pl.hp = data["stats"]["hp"];
     pl.mp = data["stats"]["mp"];
     pl.damage = data["stats"]["damage"];
@@ -39,6 +40,7 @@ inline void save(const player &pl, const char* homeDir) {
     playerData["username"] = pl.username;
     playerData["playCount"] = pl.playCount;
     playerData["stats"]["level"] = pl.level;
+    playerData["stats"]["xp"] = pl.xp;
     playerData["stats"]["hp"] = pl.hp;
     playerData["stats"]["mp"] = pl.mp;
     playerData["stats"]["damage"] = pl.damage;

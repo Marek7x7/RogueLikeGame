@@ -3,7 +3,7 @@
 #include <fstream>
 #include <cstdlib>
 
-#include "../include/game.hpp"
+#include "../include/battle_ui.hpp"
 #include "../include/files.hpp"
 
 int main(int argc, char* argv[]) {
@@ -27,7 +27,6 @@ int main(int argc, char* argv[]) {
 
     //loading player stats
     player pl = load();
-    enemy enemy;
 
     //initializing local player variables
     int hp = pl.hp;
@@ -36,6 +35,7 @@ int main(int argc, char* argv[]) {
     int speed = pl.speed;
     int defense = pl.defense;
     int level = pl.level;
+    int xp = pl.xp;
     int playCount = pl.playCount;
 
     //checking if the player is new or not
@@ -56,23 +56,20 @@ int main(int argc, char* argv[]) {
         std::cout << "> ";
         std::getline(std::cin, userInput);
 
-        if (userInput == "exit") {
-            pl.username = username;
-            pl.hp = hp;
-            pl.mp = mp;
-            pl.damage = damage;
-            pl.speed = speed;
-            pl.defense = defense;
-            pl.playCount = playCount += 1;
-            save(pl, homeDir);
-        }
+    if (userInput == "exit") {
+        pl.username = username;
+        pl.playCount += 1;
+        save(pl, homeDir);
+    }
 
         if (userInput == "battle") {
-            battle(pl, enemy, userInput);
+            // Create deque for enemies
+            std::deque<Enemy> enemies;
+            monsterGeneration(enemies, pl);
+            runBattle(pl,enemies);
         }
 
     }
 
     return 0;
 }
-
