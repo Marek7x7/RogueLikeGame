@@ -7,6 +7,13 @@
 #include "player.hpp"
 #include "battle.hpp"
 
+//HELPERS
+
+// battle_ui.hpp — add near the other helpers
+inline void clearScreen() {
+    std::cout << "\033[2J\033[1;1H" << std::flush;
+}
+
 // Lowercase a string (for case-insensitive command matching)
 inline std::string toLower(std::string s) {
     for (char& c : s) c = static_cast<char>(std::tolower(c));
@@ -34,6 +41,7 @@ inline BattleStatus runBattle(player& pl, std::deque<Enemy>& enemies) {
     while (getBattleStatus(pl, enemies) == BattleStatus::Ongoing) {
         printEnemyList(enemies);
         printActionBar();
+        clearScreen();
 
         if (!std::getline(std::cin, line)) break; // EOF / input failure safety
 
